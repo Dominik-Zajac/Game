@@ -1,8 +1,8 @@
 class Draw {
     constructor() {
         this.options = ['red', 'green', 'blue'];
-        _colors = this.drawResult();
-        this.getDrawResult = () => _colors;
+        _result = this.drawResult();
+        this.getDrawResult = () => _result;
     }
 
     //Losowanie kolorów
