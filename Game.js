@@ -3,7 +3,7 @@ class Game {
         this.stats = new Statistics();
         this.wallet = new Wallet(start);
 
-        document.getElementById('start').addEventListener('click', this.startGame);
+        document.getElementById('start').addEventListener('click', this.startGame.bind(this));
         this.spanWallet = document.querySelector('.panel span.wallet');
         this.boards = [...document.querySelectorAll('div.color')];
         this.inputBid = document.getElementById('bid');
@@ -34,6 +34,16 @@ class Game {
     }
 
     startGame() {
+        if (this.inputBid.value < 1) return alert('Kwota jest zbyt mała!');
+        const bid = Math.floor(this.inputBid.value);
 
+        if (!this.wallet.checkCanPlay(bid)) return alert('Nieprawidłowa wartość lub zbyt mało środków!');
+
+        this.wallet.changeWallet(bid, '-');
+
+        this.draw = new Draw();
+        const colors = this.draw.getDrawResult();
+        const win = Result.checkWinner(colors);
+        const wonMoney = Result.moneyWinInGame(win, bid);
     }
 }
