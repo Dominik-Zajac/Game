@@ -15,24 +15,29 @@ class Game {
         this.render();
     }
 
+    //Renderowanie gry oraz wyniku
     render(colors = ['grey', 'grey', 'grey'], money = this.wallet.getWalletValue(), result = '', stats = [0, 0, 0], bid = 0, wonMoney = 0) {
 
         this.boards.forEach((board, i) => {
             board.style.backgroundColor = colors[i];
         })
 
-        this.spanWallet.textContent = money;
+        this.spanWallet.textContent = `${money} $`;
+
         if (result) {
-            result = `Wygrales ${wonMoney}`;
-        } else if (!result && result != '') {
-            result = `Przegrales ${bid}`;
+            result = `Wygrales ${wonMoney} $`;
+        } else if (!result && result !== '') {
+            result = `Przegrales ${bid} $`;
         }
+
         this.spanResult.textContent = result;
         this.spanGames.textContent = stats[0];
-        this.spanWins.textContent = stats[0];
-        this.spanLosses.textContent = stats[0];
+        this.spanWins.textContent = stats[1];
+        this.spanLosses.textContent = stats[2];
+        this.inputBid.value = '';
     }
 
+    //Rozpoczęcie nowej gry
     startGame() {
         if (this.inputBid.value < 1) return alert('Kwota jest zbyt mała!');
         const bid = Math.floor(this.inputBid.value);

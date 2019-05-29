@@ -19,11 +19,11 @@ class Wallet {
                 } else if (type === '-') {
                     return _money -= value;
                 } else {
-                    throw new Error('Zly typ dzialania!');
+                    throw new Error('Zły typ działania!');
                 }
             } else {
                 console.log(typeof value);
-                throw new Error('Nieprawidlowa liczba!');
+                throw new Error('Nieprawidłowa liczba!');
             }
         }
     }

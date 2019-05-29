@@ -1,12 +1,6 @@
 class Statistics {
     constructor() {
-        this.gameResults = [{
-            win: true,
-            bid: 10
-        }, {
-            win: false,
-            bid: -2
-        }]
+        this.gameResults = [];
     }
 
     //Dodawanie wyniku rundy
@@ -15,7 +9,6 @@ class Statistics {
             win,
             bid
         }
-
         this.gameResults.push(gameResult);
     }
 
